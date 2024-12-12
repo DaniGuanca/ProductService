@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductService.Data;
+using ProductService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,14 @@ builder.Services.AddDbContext<ProductContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//CUANDO TENGA EL MICROSERVICIO DE CATEGORIA FUNCIONANDO OBTENGO LA URL Y LA INSERTO ACÁ
+builder.Services.AddHttpClient<CategoryClientService>(client =>
+{
+    // URL del microservicio de categorías
+    client.BaseAddress = new Uri("http://localhost:PUERTO");
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
