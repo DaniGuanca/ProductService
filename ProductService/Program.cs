@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductService.Data;
+using ProductService.Interfaces;
 using ProductService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddHttpClient<CategoryClientService>(client =>
     // URL del microservicio de categorías
     client.BaseAddress = new Uri("http://localhost:PUERTO");
 });
+
+builder.Services.AddScoped<IProductRepository, ProductRepositoryService>();
 
 
 builder.Services.AddControllers();
