@@ -85,8 +85,6 @@ namespace ProductService.Services
             };
         }
 
-
-        //ACA ME QUEDE BUSCAR EN UNA PAGINA COMO HACER EL UPDATE CON SQL SERVER ENTITY FRAWORK
         public async Task UpdateProduct(int id, UpdateProductDTO productDTO)
         {
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
