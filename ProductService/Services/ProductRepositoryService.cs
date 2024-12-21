@@ -23,8 +23,9 @@ namespace ProductService.Services
             var productsAndCategories = new List<ProductDTO>();
 
             foreach (var product in products) 
-            { 
+            {
                 var category = await _categoryClientService.GetCategoryAsync(product.CategoryId);
+                
                 productsAndCategories.Add(new ProductDTO
                 {
                     Id = product.Id,

@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ProductContext>(options =>
 builder.Services.AddHttpClient<CategoryClientService>(client =>
 {
     // URL del microservicio de categorías
-    client.BaseAddress = new Uri("http://localhost:PUERTO");
+    client.BaseAddress = new Uri("https://localhost:32771");
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepositoryService>();

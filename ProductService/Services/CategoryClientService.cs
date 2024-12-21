@@ -11,7 +11,7 @@
 
         public async Task<Category> GetCategoryAsync(int IdCategory)
         {
-            var response = await _httpClient.GetAsync($"/api/category/{IdCategory}");
+            var response = await _httpClient.GetAsync($"/api/Category/{IdCategory}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<Category>();
         }
