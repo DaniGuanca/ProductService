@@ -49,7 +49,7 @@ namespace ProductService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(AddProductDTO product)
+        public async Task<IActionResult> CreateProduct([FromBody] AddProductDTO product)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace ProductService.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, UpdateProductDTO product)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductDTO product)
         {
             try
             {
