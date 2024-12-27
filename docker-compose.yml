@@ -1,0 +1,26 @@
+networks:
+  productservicenetwork:
+
+services:
+  productsqlserverdocker:
+    container_name: product-sqlserver-docker
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+        - 8006:1433 
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=MyPassword*1234
+    networks:
+        - productservicenetwork
+
+  productservice:
+    image: ${DOCKER_REGISTRY-}productservice
+    build:
+      context: .
+      dockerfile: ProductService/Dockerfile
+    networks:
+        - productservicenetwork
+    depends_on:
+        - productsqlserverdocker
+    ports:
+        - 5001:8081 
